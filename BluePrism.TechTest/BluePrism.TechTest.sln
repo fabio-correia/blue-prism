@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluePrism.TechTest", "BluePrism.TechTest\BluePrism.TechTest.csproj", "{77194476-1CC3-42C1-86FA-A351E542CB2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluePrism.TechTest.UnitTests", "BluePrism.TechTest.UnitTests\BluePrism.TechTest.UnitTests.csproj", "{6254FA2C-D12F-4B6D-BCBC-A0378A8901F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77194476-1CC3-42C1-86FA-A351E542CB2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77194476-1CC3-42C1-86FA-A351E542CB2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77194476-1CC3-42C1-86FA-A351E542CB2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77194476-1CC3-42C1-86FA-A351E542CB2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6254FA2C-D12F-4B6D-BCBC-A0378A8901F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6254FA2C-D12F-4B6D-BCBC-A0378A8901F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6254FA2C-D12F-4B6D-BCBC-A0378A8901F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6254FA2C-D12F-4B6D-BCBC-A0378A8901F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55A5D359-892B-4538-AD74-7C3489BFCB48}
+	EndGlobalSection
+EndGlobal
