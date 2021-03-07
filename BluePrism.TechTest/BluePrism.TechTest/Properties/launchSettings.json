@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BluePrism.TechTest": {
+      "commandName": "Project",
+      "commandLineArgs": "abbe zoom words-english.txt words-english.result.txt"
+    }
+  }
+}

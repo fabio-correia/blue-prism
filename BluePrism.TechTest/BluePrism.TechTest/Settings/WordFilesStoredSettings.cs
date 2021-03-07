@@ -1,6 +1,7 @@
 ﻿using System;
+using System.IO;
 
-namespace BluePrism.TechTest
+namespace BluePrism.TechTest.Settings
 {
     public class WordFilesStoredSettings
     {
