@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace BluePrism.TechTest
 {
-    public interface ISearchWordsPath
+    public interface ISearchShortestPath<T>
     {
-        Task<IEnumerable<Word>> GetShortestPath(Word start, Word end, WordTreeNode wordTreeNode);
+        Task<IEnumerable<T>> GetShortestPath(T start, T end, TreeNode<T> wordTreeNode);
     }
 }

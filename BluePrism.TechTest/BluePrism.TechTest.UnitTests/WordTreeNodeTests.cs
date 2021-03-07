@@ -1,4 +1,5 @@
 using BluePrism.TechTest.Domain;
+using BluePrism.TechTest.Infrastruture;
 using BluePrism.TechTest.ValueObjects;
 using Xunit;
 
@@ -36,16 +37,17 @@ namespace BluePrism.TechTest.UnitTests
                 new Word("wire"),
             };
 
-            var wordTreeResult = new WordTreeNode(new Word("hide"), new Word("sort"), list, new WordComparer());
+            var wordTreeResult = new WordTreeNodeBuilder(new WordComparer())
+                .BuildTree(new Word("hide"), new Word("sort"), list);
 
-            Assert.Equal("hide", wordTreeResult.Word.Value);
+            Assert.Equal("hide", wordTreeResult.Item.Value);
 
-            var end = wordTreeResult.GetChild(new Word("hire"))
-                .GetChild(new Word("sire"))
-                .GetChild(new Word("sore"))
-                .GetChild(new Word("sort"));
+            var end = wordTreeResult.GetChild("hire")
+                .GetChild("sire")
+                .GetChild("sore")
+                .GetChild("sort");
 
-            Assert.Equal("sort", end.Word.Value);
+            Assert.Equal("sort", end.Item.Value);
         }
     }
 }

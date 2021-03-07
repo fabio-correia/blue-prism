@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BluePrism.TechTest
 {
-    public class SearchWordsPath : ISearchWordsPath
+    public class SearchWordsPath : ISearchShortestPath<Word>
     {
-        private readonly IList<WordTreeNode> _endPossibilities = new List<WordTreeNode>();
+        private readonly IList<TreeNode<Word>> _endPossibilities = new List<TreeNode<Word>>();
         public SearchWordsPath()
         {
         }
 
-        public async Task<IEnumerable<Word>> GetShortestPath(Word start, Word end, WordTreeNode root)
+        public async Task<IEnumerable<Word>> GetShortestPath(Word start, Word end, TreeNode<Word> root)
         {
             await Task.CompletedTask;
 
@@ -24,12 +24,12 @@ namespace BluePrism.TechTest
             {
                 possiblePaths[i] = new List<Word>();
                 var currentNode = _endPossibilities[i];
-                while (currentNode.Parent != null)
+                while (currentNode.Parent != null && !currentNode.Item.Equals(start))
                 {
-                    possiblePaths[i].Insert(0, currentNode.Word);
+                    possiblePaths[i].Insert(0, currentNode.Item);
                     currentNode = currentNode.Parent;
                 }
-                possiblePaths[i].Insert(0, currentNode.Word);
+                possiblePaths[i].Insert(0, currentNode.Item);
             }
 
             var shortestPath = possiblePaths
@@ -39,9 +39,9 @@ namespace BluePrism.TechTest
             return shortestPath;
         }
 
-        private void AddEndNode(Word end, WordTreeNode node)
+        private void AddEndNode(Word end, TreeNode<Word> node)
         {
-            if (node.Word.Equals(end))
+            if (node.Item.Equals(end))
             {
                 _endPossibilities.Add(node);
                 return;

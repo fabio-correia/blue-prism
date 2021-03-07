@@ -1,4 +1,5 @@
-﻿using BluePrism.TechTest.Domain;
+﻿using BluePrism.TechTest.Business.Services;
+using BluePrism.TechTest.Domain;
 using BluePrism.TechTest.ValueObjects;
 using MediatR;
 using System.Linq;
@@ -10,19 +11,19 @@ namespace BluePrism.TechTest
     public class WriteFasterPathToFileHandler : IRequestHandler<WriteShortestPathToFileCommand, Unit>
     {
         private readonly IWordsRepository _wordsRepository;
-        private readonly ISearchWordsPath _searchWordsPath;
+        private readonly ISearchShortestPath<Word> _searchWordsPath;
         private readonly IDocumentListWriter<Word> _documentListWriter;
-        private readonly IWordDistanceComparer _wordComparer;
+        private readonly ITreeNodeBuilder<Word> _treeNodeBuilder;
 
         public WriteFasterPathToFileHandler(IWordsRepository wordsRepository,
-            ISearchWordsPath searchWordsPath,
+            ISearchShortestPath<Word> searchWordsPath,
             IDocumentListWriter<Word> documentListWriter,
-            IWordDistanceComparer wordComparer)
+            ITreeNodeBuilder<Word> treeNodeBuilder)
         {
             _wordsRepository = wordsRepository;
             _searchWordsPath = searchWordsPath;
             _documentListWriter = documentListWriter;
-            _wordComparer = wordComparer;
+            _treeNodeBuilder = treeNodeBuilder;
         }
         public async Task<Unit> Handle(WriteShortestPathToFileCommand request, CancellationToken cancellationToken)
         {
@@ -32,7 +33,7 @@ namespace BluePrism.TechTest
             var start = new Word(request.Start);
             var end = new Word(request.End);
 
-            var wordsTree = new WordTreeNode(start, end, words, _wordComparer);
+            var wordsTree = _treeNodeBuilder.BuildTree(start, end, words);
 
             var shortestPath = await _searchWordsPath.GetShortestPath(start, end, wordsTree);
 

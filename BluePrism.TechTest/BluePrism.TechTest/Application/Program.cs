@@ -1,7 +1,8 @@
-﻿using BluePrism.TechTest.Domain;
+﻿using BluePrism.TechTest.Business.Services;
+using BluePrism.TechTest.Domain;
+using BluePrism.TechTest.Infrastruture;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Reflection;
 
 namespace BluePrism.TechTest
@@ -13,8 +14,8 @@ namespace BluePrism.TechTest
             //if (args?.Length != 4)
             //    throw new ArgumentException("Please add 4 arguments(start,end, sourceFileLocation, outputFileLocation).");
             args = new string[4];
-            var start = args[0] = "Spin";
-            var end = args[1] = "Spot";
+            var start = args[0] = "abbe";
+            var end = args[1] = "zoom";
             var sourceLocation = args[2] = "words-english.txt";
             var outPutLocation = args[3] = "words-english.result.txt";
 
@@ -24,9 +25,10 @@ namespace BluePrism.TechTest
             services
                 .AddSingleton(new WordFilesStoredSettings(sourceLocation, outPutLocation))
                 .AddScoped<IWordsRepository, WordsFileRepository>()
-                .AddScoped<ISearchWordsPath, SearchWordsPath>()
+                .AddScoped<ISearchShortestPath<Word>, SearchWordsPath>()
                 //.AddScoped<ISorterWords, SorterWords>()
                 .AddScoped<IDocumentListWriter<Word>, WordsFileListWriter>()
+                .AddScoped<ITreeNodeBuilder<Word>, WordTreeNodeBuilder>()
                 .AddScoped<IWordDistanceComparer, WordComparer>()
                 .AddScoped<IDocumentWriter<Word>, WordsWriter>();
 
