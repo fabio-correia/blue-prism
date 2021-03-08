@@ -7,7 +7,7 @@ Project for blue prism for avaliation purpose. The goal of this project is to re
 
 on the root you can open BluePrism.TechTest\BluePrism.TechTest.sln
 or run
-dotnet run {arg0} {arg1} {arg2} {arg3} --project BluePrism.TechTest\BluePrism.TechTest\BluePrism.TechTest.csproj
+dotnet run {arg0} {arg1} {arg2} {arg3} --project BluePrism.TechTest\BluePrism.TechTest.csproj
 
 ## Arguments
 - arg0 = start word
